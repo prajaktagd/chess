@@ -17,3 +17,8 @@ export const getMoveDirections = (chessPiece: ChessPiece): Direction[] => {
     default: return []
   }
 }
+
+export const convertStrToChessPiece = (chessPieceStr: string) => {
+  const chessPiece = chessPieceStr.toUpperCase() as ChessPiece
+  return Object.values(ChessPiece).includes(chessPiece) ? chessPiece : undefined
+}

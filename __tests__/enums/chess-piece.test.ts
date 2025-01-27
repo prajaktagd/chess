@@ -1,4 +1,8 @@
-import { ChessPiece, getMoveDirections } from '../../src/enums/chess-piece'
+import {
+  ChessPiece,
+  convertStrToChessPiece,
+  getMoveDirections,
+} from '../../src/enums/chess-piece'
 
 describe('Chess Piece', () => {
   it('should return the chess pieces', () => {
@@ -19,6 +23,20 @@ describe('Chess Piece', () => {
 
     it('should return no directions if the given piece has no direction', () => {
       expect(getMoveDirections(ChessPiece.QUEEN)).toEqual([])
+    })
+  })
+
+  describe('convertStrToChessPiece', () => {
+    it('should return true if the given string is a valid chess piece', () => {
+      expect(convertStrToChessPiece('Pawn')).toBe('PAWN')
+    })
+
+    it('should return true if the given string is a valid chess piece in lower case', () => {
+      expect(convertStrToChessPiece('king')).toBe('KING')
+    })
+
+    it('should return false if the given string is a invalid chess piece', () => {
+      expect(convertStrToChessPiece('invalid')).toBeUndefined()
     })
   })
 })
