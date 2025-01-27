@@ -1,0 +1,24 @@
+# editors
+.idea/
+.vscode/
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+
+# Test coverage
+coverage/
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+.DS_Store
+
+# Generated files
+*.d.ts
