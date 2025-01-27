@@ -1,4 +1,6 @@
 fileignoreconfig:
+- filename: jest.config.ts
+  checksum: 57120e642e7dc607e25e71be5bf98dde32f9593ccf1a207a8dac4fc99dc3a6be
 - filename: package-lock.json
-  checksum: f7e2cd2bbd1dfe43b041e99ea4a310ddeb49e7b8bdf2612455a2146d837fc4e8
+  checksum: c17303210d9552597d742e3be37f2f9b9c51b6e1fd76d73d7da9970bbadca9f7
 version: "1.0"
