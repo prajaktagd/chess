@@ -20,6 +20,9 @@ This project is built using **Node.js** and **TypeScript**.
 - `npm run lint`
 - `npm run lint:fix`
 
+### Assumptions
+- Cell Name is case-insensitive
+
 
 
 
