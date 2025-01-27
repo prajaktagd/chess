@@ -13,16 +13,12 @@ describe('Util Test', () => {
       expect(convertCellNameToCoordinate('a7')).toEqual({ x: 0, y: 6 })
     })
 
-    it('should return undefined if the cell name is more than 2 characters', () => {
-      expect(convertCellNameToCoordinate('invalid1')).toBeUndefined()
+    it('should return undefined if the cell name consists of random chars', () => {
+      expect(convertCellNameToCoordinate('Ainvalid1')).toBeUndefined()
     })
 
     it('should return undefined if the cell name is less than 2 characters', () => {
       expect(convertCellNameToCoordinate('2')).toBeUndefined()
-    })
-
-    it('should return undefined if the cell name is empty', () => {
-      expect(convertCellNameToCoordinate('')).toBeUndefined()
     })
 
     it('should return undefined if the cell name is empty', () => {
