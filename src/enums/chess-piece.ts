@@ -6,15 +6,17 @@ export enum ChessPiece {
   QUEEN = 'QUEEN',
 }
 
-export const getMoveDirections = (chessPiece: ChessPiece): Direction[] => {
+export const getMoveDirectionsAndMaxSteps = (
+  chessPiece: ChessPiece,
+): { directions: Direction[], maxSteps: number } => {
   const allDirections: Direction[] = [
     [-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0],
   ]
 
   switch (chessPiece) {
-    case ChessPiece.PAWN: return [[0, 1]]
-    case ChessPiece.KING: return allDirections
-    default: return []
+    case ChessPiece.PAWN: return { directions: [[0, 1]], maxSteps: 1 }
+    case ChessPiece.KING: return { directions: allDirections, maxSteps: 1 }
+    case ChessPiece.QUEEN: return { directions: allDirections, maxSteps: 8 }
   }
 }
 

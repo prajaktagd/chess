@@ -1,5 +1,10 @@
-import { convertStrToChessPiece, getMoveDirections } from './enums/chess-piece'
+import {
+  convertStrToChessPiece,
+  getMoveDirectionsAndMaxSteps,
+} from './enums/chess-piece'
 import { convertCellNameToCoordinate, convertCoordinateToCellName } from './util'
+import { Coordinate } from './types/coordinate'
+import { Direction } from './types/direction'
 
 export const calculatePossibleMoves = (
   chessPieceStr: string, currentCellName: string,
@@ -8,13 +13,25 @@ export const calculatePossibleMoves = (
   const currentPos = convertCellNameToCoordinate(currentCellName)
   if (!currentPos || !chessPiece) return []
 
-  return getMoveDirections(chessPiece)
-    .map((direction) => {
-      const nextPos = {
-        x: currentPos.x + direction[0],
-        y: currentPos.y + direction[1],
-      }
-      return convertCoordinateToCellName(nextPos)
-    })
-    .filter(Boolean)
+  const { directions, maxSteps } = getMoveDirectionsAndMaxSteps(chessPiece)
+  return directions.flatMap((direction) => {
+    return getMovesInDirection(currentPos, direction, maxSteps)
+  }).filter(Boolean)
+}
+
+const getMovesInDirection = (
+  currentPos: Coordinate, direction: Direction, maxSteps: number,
+) => {
+  const cells = []
+  let { x, y } = currentPos
+
+  for (let i = 0; i < maxSteps; i++) {
+    x += direction[0]
+    y += direction[1]
+    const cellName = convertCoordinateToCellName({ x, y })
+    if (!cellName) break
+
+    cells.push(cellName)
+  }
+  return cells
 }

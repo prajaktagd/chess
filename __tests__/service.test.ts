@@ -22,6 +22,14 @@ describe('Service Test', () => {
     expect(moves).toEqual(['D1', 'D2', 'C2', 'B2', 'B1'])
   })
 
+  it('should return the possible moves for the queen', () => {
+    const moves = calculatePossibleMoves(ChessPiece.QUEEN, 'G3')
+    expect(moves).toEqual([
+      'F2', 'E1', 'G2', 'G1', 'H2', 'H3', 'H4', 'G4', 'G5', 'G6', 'G7', 'G8',
+      'F4', 'E5', 'D6', 'C7', 'B8', 'F3', 'E3', 'D3', 'C3', 'B3', 'A3',
+    ])
+  })
+
   it('should return empty array if there are no possible moves for the given chess piece', () => {
     const moves = calculatePossibleMoves(ChessPiece.PAWN, 'E8')
     expect(moves).toEqual([])

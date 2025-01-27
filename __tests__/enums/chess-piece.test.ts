@@ -1,7 +1,7 @@
 import {
   ChessPiece,
   convertStrToChessPiece,
-  getMoveDirections,
+  getMoveDirectionsAndMaxSteps,
 } from '../../src/enums/chess-piece'
 
 describe('Chess Piece', () => {
@@ -10,19 +10,25 @@ describe('Chess Piece', () => {
     expect(chessPieces).toEqual(['PAWN', 'KING', 'QUEEN'])
   })
 
-  describe('getMoveDirections', () => {
-    it('should return the move directions for a pawn', () => {
-      expect(getMoveDirections(ChessPiece.PAWN)).toEqual([[0, 1]])
+  describe('getMoveDirectionsAndMaxSteps', () => {
+    it('should return the move directions and max steps for a pawn', () => {
+      expect(getMoveDirectionsAndMaxSteps(ChessPiece.PAWN)).toEqual({
+        directions: [[0, 1]], maxSteps: 1,
+      })
     })
 
-    it('should return the move directions for a king', () => {
-      expect(getMoveDirections(ChessPiece.KING)).toEqual([
-        [-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0],
-      ])
+    it('should return the move directions and max steps for a king', () => {
+      expect(getMoveDirectionsAndMaxSteps(ChessPiece.KING)).toEqual({
+        directions: [[-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]],
+        maxSteps: 1,
+      })
     })
 
-    it('should return no directions if the given piece has no direction', () => {
-      expect(getMoveDirections(ChessPiece.QUEEN)).toEqual([])
+    it('should return the move directions and max steps for a queen', () => {
+      expect(getMoveDirectionsAndMaxSteps(ChessPiece.QUEEN)).toEqual({
+        directions: [[-1, -1], [0, -1], [1, -1], [1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0]],
+        maxSteps: 8,
+      })
     })
   })
 
