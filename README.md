@@ -11,7 +11,8 @@ This project is built using **Node.js** and **TypeScript**.
 
 ### Build and run the project
 - `npm run build`
-- `npm run start`
+- `npm run start <chess_piece_name> <current_cell_name>`
+   - for eg, `npm run start Pawn B3`
 
 ### Run the tests
 - `npm run test`
