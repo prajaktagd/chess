@@ -30,6 +30,11 @@ describe('Service Test', () => {
     ])
   })
 
+  it('should return the possible moves for the knight', () => {
+    const moves = calculatePossibleMoves(ChessPiece.KNIGHT, 'E4')
+    expect(new Set(moves)).toEqual(new Set(['G5', 'C5', 'D2', 'F2', 'F6', 'D6', 'C3', 'G3']))
+  })
+
   it('should return empty array if there are no possible moves for the given chess piece', () => {
     const moves = calculatePossibleMoves(ChessPiece.PAWN, 'E8')
     expect(moves).toEqual([])
